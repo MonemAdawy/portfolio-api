@@ -66,7 +66,9 @@ export async function bootsrape() {
 
     app.use(glopalErrorHandler);
 
-    await connectDB();
+    connectDB()
+        .then(() => console.log("✅ Database connected successfully"))
+        .catch(err => console.error("❌ Database connection failed (server still running):", err.message));
 
     app.listen(process.env.PORT, () => {
     console.log(`Server running on port ${process.env.PORT}`);
