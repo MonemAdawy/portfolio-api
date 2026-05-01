@@ -6,10 +6,6 @@ export async function connectDB() {
     throw new Error("MONGO_URI is not defined in environment");
   }
 
-  await mongoose.connect(uri, {
-    tls: true,
-    tlsAllowInvalidCertificates: true,   // يسمح بالشهادات غير الصالحة (للتجربة فقط)
-    // أو بدلاً من ذلك يمكنك تعيين الـ TLS version المناسب
-  });
+  await mongoose.connect(uri);
   console.log("DB connected");
 }
